@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_name: MyString
+  room_price: 1.5
+  max_capacity: 1
+  description_of_room: MyString
+
+two:
+  room_name: MyString
+  room_price: 1.5
+  max_capacity: 1
+  description_of_room: MyString
