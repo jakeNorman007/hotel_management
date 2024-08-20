@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :guests
     resources :rooms
+    resources :bookings
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
