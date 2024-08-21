@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_20_033950) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_20_204526) do
   create_table "bookings", force: :cascade do |t|
     t.integer "number_of_nights", null: false
     t.integer "number_of_guests", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_20_033950) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jwt_denylist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
   create_table "rooms", force: :cascade do |t|
