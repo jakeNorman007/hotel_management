@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { defineStore } from 'pinia';
 
-console.log(import.meta.env.VITE_API_URL);
 export const useSessionManagerStore = defineStore('sessionManager', {
     state: () => ({
         auth_token: null,

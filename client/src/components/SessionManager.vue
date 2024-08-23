@@ -47,7 +47,6 @@ const resetData = () => {
     logInEmail.value = "";
     logInPassword.value = "";
 };
-console.log(sessionManagerStore.getUserEmail);
 </script>
 
 <template>
