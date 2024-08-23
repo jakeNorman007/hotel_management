@@ -47,15 +47,16 @@ const resetData = () => {
     logInEmail.value = "";
     logInPassword.value = "";
 };
+console.log(sessionManagerStore.getUserEmail);
 </script>
 
 <template>
-    <p>Hi from the Session Manager component</p>
     <div v-if="isLoggedIn">
-        <p>You are loggin in!</p>
-        <p>{{ this.getUserID }}</p>
-        <p>{{ this.getUserEmail }}</p>
-        <p>{{ this.getAuthToken }}</p>
+        <button @click="logOutUser">Logout</button>
+        <p>You are loged in!</p>
+        <p>{{ getUserID }}</p>
+        <p>{{ getUserEmail }}</p>
+        <p>{{ getAuthToken }}</p>
     </div>
     <div v-else>
         <h1>Sign Up!</h1>

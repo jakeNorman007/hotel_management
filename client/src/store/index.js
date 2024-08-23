@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { defineStore } from 'pinia';
 
+console.log(import.meta.env.VITE_API_URL);
 export const useSessionManagerStore = defineStore('sessionManager', {
     state: () => ({
         auth_token: null,
@@ -71,17 +72,17 @@ export const useSessionManagerStore = defineStore('sessionManager', {
                 throw error;
             }
         },
-        setUserInfo(state, data) {
+        setUserInfo(data) {
             this.user = data.data.user;
             this.auth_token = data.headers.authorization;
             axios.defaults.headers.common['Authorization'] = data.headers.authorization;
             localStorage.setItem('auth_token', data.headers.authorization);
         },
-        setUserInfoFromToken(state, data) {
+        setUserInfoFromToken(data) {
             this.user = data.data.user;
             this.auth_token = localStorage.getItem('auth_token');
         },
-        resetUserInfo(state) {
+        resetUserInfo() {
             this.user = {
                 id: null,
                 username: null,
