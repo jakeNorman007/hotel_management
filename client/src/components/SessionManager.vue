@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import Dashboard from "../components/Dashboard.vue";
+import { useRouter } from "vue-router";
 import { useSessionManagerStore } from "../store/index.js";
 
 const isSignedUp = ref(false);
@@ -8,6 +9,8 @@ const signUpEmail = ref("");
 const signUpPassword = ref ("");
 const logInEmail = ref("");
 const logInPassword = ref("");
+
+const router = useRouter();
 
 const sessionManagerStore = useSessionManagerStore();
 
@@ -29,6 +32,7 @@ const onSignUp = (event) => {
         },
     };
     sessionManagerStore.registerUser(data);
+    router.push('/dashboard');
     resetData();
 };
 
@@ -41,6 +45,7 @@ const onLogin = (event) => {
         },
     };
     sessionManagerStore.loginUser(data);
+    router.push('/dashboard');
     resetData();
 };
 
@@ -66,7 +71,8 @@ const resetData = () => {
                     </form>
                     <div class="flex gap-1 justify-center"> 
                         <p>Already have an account?</p>
-                        <button @click="isSignedUp = false" class="underline">Log In!</button>
+                        <button @click="isSignedUp = false;" class="underline">Log In!</button>
+                        <button @click="logOutUser">Log out</button>
                     </div>
                 </div>
             </div>
@@ -83,23 +89,12 @@ const resetData = () => {
                     <div class="flex gap-1 justify-center">
                         <p>Don't have an account?</p>
                         <button @click="isSignedUp = true" class="underline">Sign Up!</button>
+                        <button @click="logOutUser">Log out</button>
                     </div>
                 </div>
             </div>
             <div class="content-center m-[4rem]">
                 <div class="flex flex-col gap-3">
-                <div v-if="isLoggedIn" class="h-screen">
-                <button @click="logOutUser">Logout</button>
-                    <h1 class="text-4xl">Welcome in.</h1>
-                    <p><p class="font-semibold">SwiftStay Pro</p>The ultimate hotel management software designed for unparalleled 
-                        simplicity and speed. With its intuitive interface and streamlined workflow, SwiftStay Pro  ensures guests 
-                        experience effortless check-ins and check-outs, minimizing wait times and maximizing efficiency. By delving 
-                        into automation and real-time updates, this system empowers hotel staff to focus on delivering exceptional 
-                        service, making every guest’s stay smooth and hassle-free.</p>
-                    <p class="text-2xl">Let's get you checked in.</p>
-                </div>
-                <div v-else class="h-screen">
-                <button @click="logOutUser">Logout</button>
                     <h1 class="text-4xl">Welcome in.</h1>
                     <p><p class="font-semibold">SwiftStay Pro</p>The ultimate hotel management software designed for unparalleled 
                         simplicity and speed. With its intuitive interface and streamlined workflow, SwiftStay Pro  ensures guests 
@@ -109,6 +104,5 @@ const resetData = () => {
                     <p class="text-2xl">Let's get you checked in.</p>
                 </div>
             </div>
-        </div>
     </div>
 </template>
