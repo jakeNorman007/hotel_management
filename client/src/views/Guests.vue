@@ -2,5 +2,5 @@
 </script>
 
 <template>
-    <p>Hi this is the dashboard</p> 
+    <h1>Guests view</h1>
 </template>
