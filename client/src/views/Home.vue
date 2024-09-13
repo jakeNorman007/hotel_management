@@ -3,7 +3,7 @@ import MainNav from "../components/MainNav.vue";
 </script>
 
 <template>
-    <div>
+    <div class="h-screen grid grid-cols-[20rem_1fr]">
         <MainNav/>
         <router-view/>
     </div>

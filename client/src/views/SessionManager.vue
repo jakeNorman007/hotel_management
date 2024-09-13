@@ -19,10 +19,6 @@ const getAuthToken = computed(() => sessionManagerStore.getAuthToken);
 const getUserEmail = computed(() => sessionManagerStore.getUserEmail);
 const getUserID = computed(() => sessionManagerStore.getUserID);
 
-const logOutUser = () => {
-    sessionManagerStore.logoutUser();
-};
-
 const onSignUp = (event) => {
     event.preventDefault();
     const data = {
@@ -31,8 +27,8 @@ const onSignUp = (event) => {
             password: signUpPassword.value,
         },
     };
+    router.push("/dashboard");
     sessionManagerStore.registerUser(data);
-    router.push('/dashboard');
     resetData();
 };
 
@@ -44,8 +40,8 @@ const onLogin = (event) => {
             password: logInPassword.value,
         },
     };
+    router.push("/dashboard");
     sessionManagerStore.loginUser(data);
-    router.push('/dashboard');
     resetData();
 };
 
@@ -59,7 +55,7 @@ const resetData = () => {
 
 <template>
     <div class="h-screen grid grid-cols-2">
-        <div v-if="isSignedUp" class="h-screen content-center">
+        <div v-if="isSignedUp && !isLoggedIn" class="h-screen content-center">
             <div class="border border-black m-[8rem] p-[2rem]">
                 <form @submit="onSignUp" class="flex flex-col p-[2rem] gap-[1rem]">
                     <h1>Sign Up!</h1>
@@ -67,12 +63,11 @@ const resetData = () => {
                     class="p-1 border border-black"/>
                     <input required id="sign_up_password" type="password" v-model="signUpPassword" placeholder="password"
                     class="p-1 border border-black"/>
-                    <input id="sign_up_submit" type="submit" value="Sign Up" class="p-1 bg-gray-100"/>
+                    <button id="sign_up_submit" type="submit" class="p-1 bg-gray-100">Sign up</button>
                 </form>
                 <div class="flex gap-1 justify-center"> 
                     <p>Already have an account?</p>
                     <button @click="isSignedUp = false;" class="underline">Log In!</button>
-                    <button @click="logOutUser">Log out</button>
                 </div>
             </div>
         </div>
@@ -84,12 +79,11 @@ const resetData = () => {
                     class="p-1 border border-black"/>
                     <input required id="log_in_password" type="password" v-model="logInPassword" placeholder="password"
                     class="p-1 border border-black"/>
-                    <input id="log_in_submit" type="submit" value="Login" class="p-1 bg-gray-100"/>
+                    <button @click="onLogin" id="log_in_submit" type="submit" class="p-1 bg-gray-100">Log in</button>
                 </form>
                 <div class="flex gap-1 justify-center">
                     <p>Don't have an account?</p>
                     <button @click="isSignedUp = true" class="underline">Sign Up!</button>
-                    <button @click="logOutUser">Log out</button>
                 </div>
             </div>
         </div>

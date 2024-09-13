@@ -2,8 +2,6 @@
 </script>
 
 <template>
-    <div class="h-screen">
-        <router-view/>
-    </div>
+    <router-view/>
 </template>
 

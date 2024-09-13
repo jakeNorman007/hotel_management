@@ -1,8 +1,8 @@
 <script setup>
-import MainNav from "../components/MainNav.vue";
-import Bookings from "../views/Bookings.vue";
 </script>
 
 <template>
-    <p>Dashboard view</p> 
+    <div class="bg-red-500">
+        <h1>Dashboard view</h1>
+    </div> 
 </template>

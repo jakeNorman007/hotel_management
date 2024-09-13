@@ -2,8 +2,7 @@
 </script>
 
 <template>
-    <div class="h-screen">
+    <div class="bg-blue-500">
         <h1>Bookings view</h1>
-        <router-view/>
     </div>
 </template>
