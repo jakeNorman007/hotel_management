@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="bg-red-500">
+    <div>
         <h1>Dashboard view</h1>
     </div> 
 </template>

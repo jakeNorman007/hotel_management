@@ -8,15 +8,21 @@ onMounted(async () => {
     guestsList.value = await getGuests();
 });
 
-const handleGuestDelete = async () => {
+const handleGuestDelete = async (guestId) => {
+    try {
+        await onGuestsDelete(guestId);
+        guestsList.value = guestsList.value.filter(guest => guest.id !== guestId);
+        console.log("Guest deleted");
+    } catch (error) {
+        console.error("Error deleting guest", error);
+    };
 };
-
 </script>
 
 <template>
     <div>
         <h1>Guests</h1>
-        <div v-for="(guest, index) in guestsList" :key="index" class="flex gap-6">
+        <div v-for="(guest, index) in guestsList" :key="guest.id" class="flex gap-6">
             <p>{{ guest.id }}</p>
             <p>{{ guest.first_name }}</p>
             <p>{{ guest.last_name }}</p>

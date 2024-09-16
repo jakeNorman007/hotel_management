@@ -55,7 +55,7 @@ const resetData = () => {
 
 <template>
     <div class="h-screen grid grid-cols-2">
-        <div v-if="isSignedUp && !isLoggedIn" class="h-screen content-center">
+        <div v-if="isSignedUp" class="h-screen content-center">
             <div class="border border-black m-[8rem] p-[2rem]">
                 <form @submit="onSignUp" class="flex flex-col p-[2rem] gap-[1rem]">
                     <h1>Sign Up!</h1>
@@ -79,7 +79,7 @@ const resetData = () => {
                     class="p-1 border border-black"/>
                     <input required id="log_in_password" type="password" v-model="logInPassword" placeholder="password"
                     class="p-1 border border-black"/>
-                    <button @click="onLogin" id="log_in_submit" type="submit" class="p-1 bg-gray-100">Log in</button>
+                    <button id="log_in_submit" type="submit" class="p-1 bg-gray-100">Log in</button>
                 </form>
                 <div class="flex gap-1 justify-center">
                     <p>Don't have an account?</p>
