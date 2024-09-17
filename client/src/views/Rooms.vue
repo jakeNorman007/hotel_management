@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { getRooms, onRoomsDelete } from "../services/roomsServices";
+import { getRooms, onRoomsDelete, onRoomsCreate } from "../services/roomsServices";
 
 const roomsList = ref([]);
 
@@ -13,15 +13,22 @@ const handleRoomDelete = async (roomId) => {
         await onRoomsDelete(roomId);
         roomsList.value = roomsList.value.filter(room => room.id !== roomId);
         console.log("Room deleted");
-    } catch (error) {
+    } catch(error) {
         console.error("Error deleting room", error);
     };
+};
+
+const handleCreateRoom = async () => {
+    await onRoomsCreate();
 };
 </script>
 
 <template>
     <div>
-        <h1>Rooms view</h1>
+        <div class="flex justify-between px-3">
+            <h1>Rooms view</h1>
+            <button class="bg-gray-200 p-3 my-3" @click="handleCreateRoom()">Create</button>
+        </div>
         <div v-for="(room, index) in roomsList" :key="room.id" class="flex gap-6">
             <p>{{ room.id }}</p>
             <p>{{ room.room_name }}</p>

@@ -7,7 +7,16 @@ export async function getRooms() {
             description_of_room: i.description_of_room})); 
     } catch(error) {
         console.error("Error getting rooms data:", error);
-        return {data: [], error: "Failed to gather roomss data, please try again."};
+        return {data: [], error: "Failed to gather rooms data, please try again."};
+    };
+};
+
+export async function onRoomsCreate() {
+    try {
+        const response = await axios.post("http://localhost:3000/v1/rooms");
+        console.log(response);
+    } catch(error) {
+        console.error("Error creating room:", error);
     };
 };
 
