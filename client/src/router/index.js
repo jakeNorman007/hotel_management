@@ -13,25 +13,25 @@ const routes = [
         { path: "/dashboard", 
           name: "Dashboard",
           component: () => import("../views/Dashboard.vue"),
-          meta: { requiresAuth: true },
+          //meta: { requiresAuth: true },
         },
         {
           path: "/bookings",
           name: "Bookings",
           component: () => import("../views/Bookings.vue"),
-          meta: { requiresAuth: true },
+          //meta: { requiresAuth: true },
         },
         {
           path: "/guests",
           name: "Guests",
           component: () => import("../views/Guests.vue"),
-          meta: { requiresAuth: true },
+          //meta: { requiresAuth: true },
         },
         {
           path: "/rooms",
           name: "Rooms",
           component: () => import("../views/Rooms.vue"),
-          meta: { requiresAuth: true },
+          //meta: { requiresAuth: true },
         },
       ]
     },
@@ -42,7 +42,7 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
     const store = useSessionManagerStore();
     const isAuthenticated = store.isLoggedIn;
 
@@ -51,6 +51,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next();
     }
-});
+});*/
 
 export default router;

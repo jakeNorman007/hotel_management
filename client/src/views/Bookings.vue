@@ -20,9 +20,22 @@ const handleBookingDelete = async (bookingId) => {
 </script>
 
 <template>
-    <div>
-        <h1>Bookings view</h1>
-        <div v-for="(booking, index) in bookingsList" :key="booking.id" class="flex gap-6">
+    <div class="m-[3rem]">
+        <div class="flex justify-between">
+            <h1 class="font-semibold mb-[2rem] text-3xl">Bookings</h1>
+            <button class="bg-gray-200 p-3 my-3">Create</button>
+        </div>
+        <div class="grid grid-cols-9 px-3 py-[1rem] border border-b-black font-semibold">
+            <p>Id</p>
+            <p>Nights</p>
+            <p>Guests</p>
+            <p>Total Price</p>
+            <p>Status</p>
+            <p>Paid</p>
+            <p>Room Id</p>
+            <p>Guest Id</p>
+        </div>
+        <div v-for="(booking, index) in bookingsList" :key="booking.id" class="grid grid-cols-9 border border-b-black px-3 py-[1rem]">
             <p>{{ booking.id }}</p>
             <p>{{ booking.number_of_nights }}</p>
             <p>{{ booking.number_of_guests }}</p>
@@ -31,8 +44,10 @@ const handleBookingDelete = async (bookingId) => {
             <p>{{ booking.is_paid }}</p>
             <p>{{ booking.room_id }}</p>
             <p>{{ booking.guest_id }}</p>
-            <button>Edit</button>
-            <button @click="handleBookingDelete(booking.id)">Delete</button>
+            <div class="flex static pr-[4rem] gap-[1rem]">
+                <button class="bg-gray-200 px-[1rem] py-1">Edit</button>
+                <button class="bg-gray-200 px-[1rem] py-1" @click="handleBookingDelete(booking.id)">Delete</button>
+            </div>
         </div>
     </div>
 </template>

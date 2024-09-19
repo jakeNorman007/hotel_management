@@ -3,10 +3,9 @@ import { defineStore } from 'pinia';
 
 export const useSessionManagerStore = defineStore('sessionManager', {
     state: () => ({
-        auth_token: null,
+        auth_token: localStorage.getItem("auth_token"),
         user: {
             id: null,
-            username: null,
             email: null,
         },
     }),

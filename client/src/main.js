@@ -14,10 +14,10 @@ app.use(router)
 const authToken = localStorage.getItem("auth_token");
 
 if (authToken && authToken !== "undefined") {
-    app.mount("#app");
-
     const sessionStore = useSessionManagerStore();
     sessionStore.loginUserWithToken({ auth_token: authToken });
+
+    app.mount("#app");
 } else {
     app.mount("#app");
 }

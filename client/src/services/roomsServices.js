@@ -13,8 +13,7 @@ export async function getRooms() {
 
 export async function onRoomsCreate() {
     try {
-        const response = await axios.post("http://localhost:3000/v1/rooms");
-        console.log(response);
+        console.log("CREATE");
     } catch(error) {
         console.error("Error creating room:", error);
     };
