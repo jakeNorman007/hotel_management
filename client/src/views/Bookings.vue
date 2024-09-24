@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import CreateBookingModal from "../components/CreateBookingModal.vue";
 import { getBookings, onBookingsDelete } from "../services/bookingsServices";
 
 const bookingsList = ref([]);
@@ -23,7 +24,7 @@ const handleBookingDelete = async (bookingId) => {
     <div class="m-[3rem]">
         <div class="flex justify-between">
             <h1 class="font-semibold mb-[2rem] text-3xl">Bookings</h1>
-            <button class="bg-gray-200 p-3 my-3">Create</button>
+            <CreateBookingModal/>
         </div>
         <div class="grid grid-cols-9 px-3 py-[1rem] border border-b-black font-semibold">
             <p>Id</p>

@@ -1,4 +1,5 @@
 <script setup>
+import CreateGuestModal from "../components/CreateGuestModal.vue";
 import AddIcon from "../assets/icons/AddIcon.vue";
 import { ref, onMounted } from "vue";
 import { getGuests, onGuestsDelete } from "../services/guestsServices";
@@ -24,10 +25,7 @@ const handleGuestDelete = async (guestId) => {
     <div class="m-[3rem]">
         <div class="flex justify-between">
             <h1 class="font-semibold text-3xl">Guests</h1>
-            <button class="flex items-center gap-1 font-semibold text-green-800 bg-green-200 p-3 my-3 hover:bg-green-400 hover:text-white">
-                <AddIcon/>
-                <p>Create</p>
-            </button>
+            <CreateGuestModal/>
         </div>
         <div class="grid grid-cols-5 px-3 py-[1rem] bg-gray-100 text-gray-600 border border-b-black border-t-white border-x-white font-semibold">
             <p>Id</p>

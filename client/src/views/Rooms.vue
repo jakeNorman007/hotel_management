@@ -1,4 +1,5 @@
 <script setup>
+import CreateRoomModal from "../components/CreateRoomModal.vue";
 import { ref, onMounted } from "vue";
 import { getRooms, onRoomsDelete, onRoomsCreate } from "../services/roomsServices";
 
@@ -27,7 +28,7 @@ const handleCreateRoom = async () => {
     <div class="m-[3rem]">
         <div class="flex justify-between">
             <h1 class="font-semibold pb-[2rem] text-3xl">Rooms</h1>
-            <button class="bg-gray-200 p-3 my-3" @click="handleCreateRoom()">Create</button>
+            <CreateRoomModal/>
         </div>
         <div class="grid grid-cols-6 px-3 py-[1rem] border border-b-black font-semibold">
             <p>Id</p>
