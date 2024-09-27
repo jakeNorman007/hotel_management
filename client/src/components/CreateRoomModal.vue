@@ -1,9 +1,22 @@
 <script setup>
 import { Teleport, ref } from "vue";
 import AddIcon from "../assets/icons/AddIcon.vue";
+import { onRoomsCreate } from "../services/roomsServices";
 
 const createModalIsOpen = ref(false);
-const message = ref("");
+const room = ref({room_name: "", room_price: "", max_capacity: "", description_of_room: ""});
+const emit = defineEmits(["close", "room-added"]) 
+
+const onSubmit = async() => {
+    try {
+        const response = await onRoomsCreate(room.value);
+        emit("room-added", response);
+        emit("close");
+        room.value = {room_name: "", room_price: "", max_capacity: "", description_of_room: ""};
+    } catch(error) {
+        console.error("failed to submit room creation", error);
+    };
+};
 </script>
 
 <template>
@@ -15,16 +28,18 @@ const message = ref("");
         <Teleport to="body">
             <div v-if="createModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
                 <button @click="createModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
-                <div class="flex flex-col pl-[2rem]">
+                <form @submit="onSubmit" class="flex flex-col pl-[2rem]">
                     <label>Room name:</label>
-                    <input v-model="text" class="border border-black w-[20rem]"/>
+                    <input v-model="room.room_name" placeholder="room name" required class="border border-black w-[20rem]"/>
                     <label>Price:</label>
-                    <input v-model="text" class="border border-black w-[20rem]"/>
+                    <input v-model="room.room_price" placeholder="room price" required class="border border-black w-[20rem]"/>
                     <label>Capacity:</label>
-                    <input v-model="text" class="border border-black w-[20rem]"/>
+                    <input v-model="room.max_capacity" placeholder="room capacity" required class="border border-black w-[20rem]"/>
                     <label>Description:</label>
-                    <input v-model="text" class="border border-black w-[20rem]"/>
-                </div>
+                    <input v-model="room.description_of_room" placeholder="room description" required class="border border-black w-[20rem]"/>
+                    <button type="submit">Create Room</button>
+                    <button type="button" @click="createModalIsOpen = false">Cancel</button>
+                </form>
             </div>
         </Teleport>
     </div>
