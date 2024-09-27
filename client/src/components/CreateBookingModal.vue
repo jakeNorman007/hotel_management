@@ -14,6 +14,16 @@ const createModalIsOpen = ref(false);
         <Teleport to="body">
             <div v-if="createModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
                 <button @click="createModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
+                <div class="flex flex-col pl-[2rem]">
+                    <label>Number of nights:</label>
+                    <input v-model="text" class="border border-black w-[20rem]"/>
+                    <label>Number of guests:</label>
+                    <input v-model="text" class="border border-black w-[20rem]"/>
+                    <label>Status:</label>
+                    <input v-model="text" class="border border-black w-[20rem]"/>
+                    <label>Is paid:</label>
+                    <input v-model="text" class="border border-black w-[20rem]"/>
+                </div>
             </div>
         </Teleport>
     </div>

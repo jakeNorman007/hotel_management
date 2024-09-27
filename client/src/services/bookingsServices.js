@@ -11,6 +11,15 @@ export async function getBookings() {
     };
 };
 
+export async function onBookingsCreate(booking) {
+    try {
+        const response = await axios.post("http://localhost:3000/v1/bookings", booking);
+        return response.data;
+    } catch(error) {
+        console.error("Error creating booking:", error);
+    };
+};
+
 export async function onBookingsDelete(bookingId) {
     try {
         const response = await axios.delete(`http://localhost:3000/v1/bookings/${bookingId}`);

@@ -9,6 +9,12 @@ onMounted(async () => {
     bookingsList.value = await getBookings();
 });
 
+const handleBookingAdd = (booking) => {
+    bookingsList.value.push({
+        body: booking.Body,
+    });
+};
+
 const handleBookingDelete = async (bookingId) => {
     try {
         await onBookingsDelete(bookingId);
@@ -23,10 +29,10 @@ const handleBookingDelete = async (bookingId) => {
 <template>
     <div class="m-[3rem]">
         <div class="flex justify-between">
-            <h1 class="font-semibold mb-[2rem] text-3xl">Bookings</h1>
-            <CreateBookingModal/>
+            <h1 class="font-semibold text-3xl">Bookings</h1>
+            <CreateBookingModal @booking-added="handleBookingAdd"/>
         </div>
-        <div class="grid grid-cols-9 px-3 py-[1rem] border border-b-black font-semibold">
+        <div class="grid grid-cols-9 px-3 py-[1rem] bg-gray-100 text-gray-600 border border-b-black border-t-white border-x-white font-semibold">
             <p>Id</p>
             <p>Nights</p>
             <p>Guests</p>
@@ -36,7 +42,7 @@ const handleBookingDelete = async (bookingId) => {
             <p>Room Id</p>
             <p>Guest Id</p>
         </div>
-        <div v-for="(booking, index) in bookingsList" :key="booking.id" class="grid grid-cols-9 border border-b-black px-3 py-[1rem]">
+        <div v-for="(booking, index) in bookingsList" :key="booking.id" class="grid grid-cols-9 border border-b-black border-x-white px-3 py-[1rem]">
             <p>{{ booking.id }}</p>
             <p>{{ booking.number_of_nights }}</p>
             <p>{{ booking.number_of_guests }}</p>
@@ -45,9 +51,9 @@ const handleBookingDelete = async (bookingId) => {
             <p>{{ booking.is_paid }}</p>
             <p>{{ booking.room_id }}</p>
             <p>{{ booking.guest_id }}</p>
-            <div class="flex static pr-[4rem] gap-[1rem]">
-                <button class="bg-gray-200 px-[1rem] py-1">Edit</button>
-                <button class="bg-gray-200 px-[1rem] py-1" @click="handleBookingDelete(booking.id)">Delete</button>
+            <div class="flex static gap-[1rem]">
+                <button class="bg-green-200 px-[1rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white">Edit</button>
+                <button class="bg-green-200 px-[1rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white" @click="handleBookingDelete(booking.id)">Delete</button>
             </div>
         </div>
     </div>

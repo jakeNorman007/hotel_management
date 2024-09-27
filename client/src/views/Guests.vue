@@ -1,7 +1,6 @@
 <script setup>
-import CreateGuestModal from "../components/CreateGuestModal.vue";
-import AddIcon from "../assets/icons/AddIcon.vue";
 import { ref, onMounted } from "vue";
+import CreateGuestModal from "../components/CreateGuestModal.vue";
 import { getGuests, onGuestsDelete } from "../services/guestsServices";
 
 const guestsList = ref([]);
@@ -9,6 +8,12 @@ const guestsList = ref([]);
 onMounted(async () => {
     guestsList.value = await getGuests();
 });
+
+const handleGuestAdd = (guest) => {
+    guestsList.value.push({
+        body: guest.Body,
+    });
+};
 
 const handleGuestDelete = async (guestId) => {
     try {
@@ -25,7 +30,7 @@ const handleGuestDelete = async (guestId) => {
     <div class="m-[3rem]">
         <div class="flex justify-between">
             <h1 class="font-semibold text-3xl">Guests</h1>
-            <CreateGuestModal/>
+            <CreateGuestModal @guest-added="handleGuestAdd"/>
         </div>
         <div class="grid grid-cols-5 px-3 py-[1rem] bg-gray-100 text-gray-600 border border-b-black border-t-white border-x-white font-semibold">
             <p>Id</p>
@@ -38,7 +43,7 @@ const handleGuestDelete = async (guestId) => {
             <p>{{ guest.first_name }}</p>
             <p>{{ guest.last_name }}</p>
             <p>{{ guest.email }}</p>
-            <div class="flex static pr-[4rem] gap-[4rem]">
+            <div class="flex static gap-[1rem]">
                 <button class="bg-green-200 px-[2rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white">Edit</button>
                 <button class="bg-green-200 text-green-700 font-semibold px-[2rem] py-1 hover:bg-green-400 hover:text-white" @click="handleGuestDelete(guest.id)">Delete</button>
             </div>

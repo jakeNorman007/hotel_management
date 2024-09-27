@@ -10,6 +10,15 @@ export async function getGuests() {
     }
 };
 
+export async function onGuestsCreate(guest) {
+    try {
+        const response = await axios.post("http://localhost:3000/v1/guests", guest);
+        return response.data;
+    } catch(error) {
+        console.error("Error creating guest:", error);
+    };
+};
+
 export async function onGuestsDelete(guestId) {
     try {
         const response = await axios.delete(`http://localhost:3000/v1/guests/${guestId}`);
