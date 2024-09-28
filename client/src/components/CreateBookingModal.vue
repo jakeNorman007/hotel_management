@@ -36,9 +36,15 @@ const onSubmit = async() => {
                     <label>Total price:</label>
                     <input v-model="booking.total_price" placeholder="total price" required class="border border-black w-[20rem]"/>
                     <label>Status:</label>
-                    <input v-model="booking.status" placeholder="status" required class="border border-black w-[20rem]"/>
+                    <select v-model="booking.status" name="status" required class="border border-black w-[20rem]">
+                        <option value="occupied">occupied</option>
+                        <option value="unoccupied">unoccupied</option>
+                    </select>
                     <label>Is paid:</label>
-                    <input v-model="booking.is_paid" placeholder="is paid" required class="border border-black w-[20rem]"/>
+                    <select v-model="booking.is_paid" name="is paid" required class="border border-black w-[20rem]">
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
                     <label>Room id:</label>
                     <input v-model="booking.room_id" placeholder="room id" required class="border border-black w-[20rem]"/>
                     <label>Guest id:</label>

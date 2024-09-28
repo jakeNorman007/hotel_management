@@ -46,8 +46,15 @@ const handleBookingDelete = async (bookingId) => {
             <p>{{ booking.id }}</p>
             <p>{{ booking.number_of_nights }}</p>
             <p>{{ booking.number_of_guests }}</p>
-            <p>{{ booking.total_price }}</p>
-            <p>{{ booking.status }}</p>
+            <p>{{ booking.total_price }}.00</p>
+            <div>
+                <div v-if="booking.status == 'occupied'">
+                    <p class="text-red-700">{{ booking.status }}</p>
+                </div>
+                <div v-else>
+                    <p class="text-indigo-700">{{ booking.status }}</p>
+                </div>
+            </div>
             <p>{{ booking.is_paid }}</p>
             <p>{{ booking.room_id }}</p>
             <p>{{ booking.guest_id }}</p>
