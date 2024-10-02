@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import CreateBookingModal from "../components/CreateBookingModal.vue";
+import EditBookingModal from "../components/EditBookingModal.vue";
 import { getBookings, onBookingsDelete } from "../services/bookingsServices";
 
 const bookingsList = ref([]);
@@ -46,7 +47,7 @@ const handleBookingDelete = async (bookingId) => {
             <p>{{ booking.id }}</p>
             <p>{{ booking.number_of_nights }}</p>
             <p>{{ booking.number_of_guests }}</p>
-            <p>{{ booking.total_price }}.00</p>
+            <p>${{ booking.total_price }}.00</p>
             <div>
                 <div v-if="booking.status == 'occupied'">
                     <p class="text-red-700">{{ booking.status }}</p>
@@ -59,7 +60,8 @@ const handleBookingDelete = async (bookingId) => {
             <p>{{ booking.room_id }}</p>
             <p>{{ booking.guest_id }}</p>
             <div class="flex static gap-[1rem]">
-                <button class="bg-green-200 px-[1rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white">Edit</button>
+                <EditBookingModal :bookingId="booking?.id" :numberOfNights="booking?.number_of_nights" :numberOfGuests="booking?.number_of_guests" :totalPrice="booking?.total_price"
+                   :bookingStatus="booking?.status" :bookingIsPaid="booking?.is_paid" :roomId="booking?.room_id" :guestId="booking?.guest_id"/>
                 <button class="bg-green-200 px-[1rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white" @click="handleBookingDelete(booking.id)">Delete</button>
             </div>
         </div>

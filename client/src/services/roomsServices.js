@@ -20,6 +20,15 @@ export async function onRoomsCreate(room) {
     };
 };
 
+export async function onRoomsUpdate(roomId, updatedRoom) {
+    try {
+        const response = await axios.put(`http://localhost:3000/v1/rooms/${roomId}`, updatedRoom);
+        return response.data;
+    } catch(error) {
+        console.error("Error editing room:", error);
+    };
+};
+
 export async function onRoomsDelete(roomId) {
     try {
         const response = await axios.delete(`http://localhost:3000/v1/rooms/${roomId}`);

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import CreateRoomModal from "../components/CreateRoomModal.vue";
+import EditRoomModal from "../components/EditRoomModal.vue";
 import { getRooms, onRoomsDelete, onRoomsCreate } from "../services/roomsServices";
 
 const roomsList = ref([]);

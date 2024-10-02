@@ -3,7 +3,7 @@ import axios from "axios";
 export async function getBookings() {
     try {
         const response = await axios.get("http://localhost:3000/v1/bookings");
-        return response.data.map((i) => ({id: i.id, number_of_nights: i.number_of_nights, total_price: i.total_price, status: i.status,
+        return response.data.map((i) => ({id: i.id, number_of_nights: i.number_of_nights, number_of_guests: i.number_of_guests, total_price: i.total_price, status: i.status,
             is_paid: i.is_paid, room_id: i.room_id, guest_id: i.guest_id})); 
     } catch(error) {
         console.error("Error getting bookings data:", error);
@@ -17,6 +17,15 @@ export async function onBookingsCreate(booking) {
         return response.data;
     } catch(error) {
         console.error("Error creating booking:", error);
+    };
+};
+
+export async function onBookingsUpdate(bookingId, updatedBooking) {
+    try {
+        const response = await axios.put(`http://localhost:3000/v1/bookings/${bookingId}`, updatedBooking);
+        return response.data;
+    } catch(error) {
+        console.error("Error editing booking:", error);
     };
 };
 

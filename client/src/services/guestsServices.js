@@ -19,6 +19,15 @@ export async function onGuestsCreate(guest) {
     };
 };
 
+export async function onGuestsUpdate(guestId, updatedGuest) {
+    try {
+        const response = await axios.put(`http://localhost:3000/v1/guests/${guestId}`, updatedGuest);
+        return response.data;
+    } catch(error) {
+        console.error("Error editing guest:", error);
+    };
+};
+
 export async function onGuestsDelete(guestId) {
     try {
         const response = await axios.delete(`http://localhost:3000/v1/guests/${guestId}`);

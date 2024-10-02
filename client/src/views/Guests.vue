@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import CreateGuestModal from "../components/CreateGuestModal.vue";
+import EditGuestModal from "../components/EditGuestModal.vue";
 import { getGuests, onGuestsDelete } from "../services/guestsServices";
 
 const guestsList = ref([]);
@@ -44,7 +45,7 @@ const handleGuestDelete = async (guestId) => {
             <p>{{ guest.last_name }}</p>
             <p>{{ guest.email }}</p>
             <div class="flex static gap-[1rem]">
-                <button class="bg-green-200 px-[2rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white">Edit</button>
+                <EditGuestModal :guestId="guest?.id" :firstName="guest?.first_name" :lastName="guest?.last_name" :email="guest?.email" />
                 <button class="bg-green-200 text-green-700 font-semibold px-[2rem] py-1 hover:bg-green-400 hover:text-white" @click="handleGuestDelete(guest.id)">Delete</button>
             </div>
         </div>

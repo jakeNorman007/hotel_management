@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { useSessionManagerStore } from "../store";
+//import { useSessionManagerStore } from "../store";
 
 const routes = [
     { path: "/auth", 
