@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import CreateRoomModal from "../components/CreateRoomModal.vue";
 import EditRoomModal from "../components/EditRoomModal.vue";
+import CreateRoomModal from "../components/CreateRoomModal.vue";
 import { getRooms, onRoomsDelete, onRoomsCreate } from "../services/roomsServices";
 
 const roomsList = ref([]);
@@ -47,7 +47,7 @@ const handleRoomDelete = async (roomId) => {
             <p>{{ room.max_capacity }}</p>
             <p>{{ room.description_of_room}}</p>
             <div class="flex static gap-[1rem]">
-                <button class="bg-green-200 px-[2rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white">Edit</button>
+                <EditRoomModal :roomId="room?.id" :roomName="room?.room_name" :roomPrice="room?.room_price" :maxCapacity="room?.max_capacity" :descriptionOfRoom="room?.description_of_room"/>
                 <button class="bg-green-200 px-[2rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white" @click="handleRoomDelete(room.id)">Delete</button>
             </div>
         </div>

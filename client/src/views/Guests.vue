@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import CreateGuestModal from "../components/CreateGuestModal.vue";
 import EditGuestModal from "../components/EditGuestModal.vue";
+import CreateGuestModal from "../components/CreateGuestModal.vue";
 import { getGuests, onGuestsDelete } from "../services/guestsServices";
 
 const guestsList = ref([]);

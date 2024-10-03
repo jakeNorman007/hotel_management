@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import CreateBookingModal from "../components/CreateBookingModal.vue";
 import EditBookingModal from "../components/EditBookingModal.vue";
+import CreateBookingModal from "../components/CreateBookingModal.vue";
 import { getBookings, onBookingsDelete } from "../services/bookingsServices";
 
 const bookingsList = ref([]);
