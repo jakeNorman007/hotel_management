@@ -45,8 +45,10 @@ const handleGuestDelete = async (guestId) => {
             <p>{{ guest.last_name }}</p>
             <p>{{ guest.email }}</p>
             <div class="flex static gap-[1rem]">
-                <EditGuestModal :guestId="guest?.id" :firstName="guest?.first_name" :lastName="guest?.last_name" :email="guest?.email" />
-                <button class="bg-green-200 text-green-700 font-semibold px-[2rem] py-1 hover:bg-green-400 hover:text-white" @click="handleGuestDelete(guest.id)">Delete</button>
+                <EditGuestModal :guestId="guest?.id" :firstName="guest?.first_name" :lastName="guest?.last_name" :email="guest?.email"/>
+                <button class="bg-green-200 text-green-700 font-semibold px-[2rem] py-1 hover:bg-green-400 hover:text-white"@click="handleGuestDelete(guest.id)">
+                    <p>Delete</p>
+                </button>
             </div>
         </div>
     </div>
