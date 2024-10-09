@@ -16,6 +16,7 @@ const handleBookingAdd = (booking) => {
         body: booking.Body,
     });
 };
+
 </script>
 
 <template>

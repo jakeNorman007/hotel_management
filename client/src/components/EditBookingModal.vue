@@ -1,14 +1,26 @@
 <script setup>
-import { Teleport, ref } from "vue";
+import { Teleport, ref, onMounted } from "vue";
+import { getRooms } from "../services/roomsServices";
+import { getGuests } from "../services/guestsServices";
 import { onBookingsUpdate } from "../services/bookingsServices";
 
 const props = defineProps(["bookingId", "numberOfNights", "numberOfGuests", "totalPrice", "bookingStatus", "bookingIsPaid", "roomId", "guestId"])
 
+const roomsList = ref([]);
+const guestsList = ref([]);
 const editModalIsOpen = ref(false);
-const editedBooking = ref({number_of_nights: props.numberOfNights, number_of_guests: props.numberOfGuests, total_price: props.totalPrice, status: props.bookingStatus,
-                            is_paid: props.bookingIsPaid, room_id: props.roomId, guest_id: props.guestId});
+const editedBooking = ref({number_of_nights: props.numberOfNights, number_of_guests: props.numberOfGuests, total_price: props.totalPrice, status: props.bookingStatus, is_paid: props.bookingIsPaid,
+                            room_id: props.roomId, guest_id: props.guestId});
 
 const idToEdit = props.bookingId;
+
+onMounted(async () => {
+    roomsList.value = await getRooms();
+});
+
+onMounted(async () => {
+    guestsList.value = await getGuests();
+});
 
 const onEdit = async () => {
     try {
@@ -29,26 +41,30 @@ const onEdit = async () => {
             <div v-if="editModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
                 <button @click="editModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
                 <form @submit="onEdit" class="flex flex-col pl-[2rem]">
-                    <label>Number of nights:</label>
-                    <input :placeholder="numberOfNights" v-model="editedBooking.number_of_nights" required class="border border-black w-[20rem]"/>
-                    <label>Number of guests:</label>
-                    <input :placeholder="numberOfGuests" v-model="editedBooking.number_of_guests" required class="border border-black w-[20rem]"/>
-                    <label>Total Price:</label>
-                    <input :placeholder="totalPrice" v-model="editedBooking.total_price" required class="border border-black w-[20rem]"/>
-                    <label>Status:</label>
-                    <select v-model="editedBooking.status" required class="border border-black w-[20rem]">
+                    <label for="nights">Number of nights:</label>
+                    <input id="nights" :placeholder="numberOfNights" v-model="editedBooking.number_of_nights" required class="border border-black w-[20rem]"/>
+                    <label for="guests">Number of guests:</label>
+                    <input id="guests" :placeholder="numberOfGuests" v-model="editedBooking.number_of_guests" required class="border border-black w-[20rem]"/>
+                    <label for="price">Total Price:</label>
+                    <input id="price":placeholder="totalPrice" v-model="editedBooking.total_price" required class="border border-black w-[20rem]"/>
+                    <label for="status">Status:</label>
+                    <select id="status" v-model="editedBooking.status" required class="border border-black w-[20rem]">
                         <option value="occupied">occupied</option>
                         <option value="unoccupied">unoccupied</option>
                     </select>
-                    <label>Is Paid:</label>
-                    <select v-model="editedBooking.is_paid" required class="border border-black w-[20rem]">
+                    <label for="paid">Is Paid:</label>
+                    <select id="paid" v-model="editedBooking.is_paid" required class="border border-black w-[20rem]">
                         <option value="true">true</option>
                         <option value="false">false</option>
                     </select>
-                    <label>Room Id:</label>
-                    <input :placeholder="roomId" v-model="editedBooking.room_id" required class="border border-black w-[20rem]"/>
-                    <label>Guest Id:</label>
-                    <input :placeholder="guestId" v-model="editedBooking.guest_id" required class="border border-black w-[20rem]"/>
+                    <label for="room">Room:</label>
+                    <select id="room" required class="border border-black w-[20rem]">
+                        <option v-for="(room, index) in roomsList" :key="index" value="id">{{ room.id }}: {{ room.room_name }}</option>
+                    </select>
+                    <label for="guest">Guest:</label>
+                    <select id="guest" required class="border border-black w-[20rem]">
+                        <option v-for="(guest, index) in guestsList" :key="index" value="id">{{ guest.id }}: {{ guest.first_name }} {{ guest.last_name }}</option>
+                    </select>
                     <button type="submit">Edit Booking</button>
                     <button type="button" @click="editModalIsOpen = false">Cancel edit</button>
                 </form>
