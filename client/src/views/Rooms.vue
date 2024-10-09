@@ -2,7 +2,8 @@
 import { ref, onMounted } from "vue";
 import EditRoomModal from "../components/EditRoomModal.vue";
 import CreateRoomModal from "../components/CreateRoomModal.vue";
-import { getRooms, onRoomsDelete, onRoomsCreate } from "../services/roomsServices";
+import DeleteRoomWarningModal from "../components/DeleteRoomWarningModal.vue"; 
+import { getRooms, onRoomsCreate } from "../services/roomsServices";
 
 const roomsList = ref([]);
 
@@ -14,16 +15,6 @@ const handleRoomAdd = (room) => {
     roomsList.value.push({
         body: room.Body,
     });
-};
-
-const handleRoomDelete = async (roomId) => {
-    try {
-        await onRoomsDelete(roomId);
-        roomsList.value = roomsList.value.filter(room => room.id !== roomId);
-        console.log("Room deleted");
-    } catch(error) {
-        console.error("Error deleting room", error);
-    };
 };
 </script>
 
@@ -40,15 +31,15 @@ const handleRoomDelete = async (roomId) => {
             <p>Capacity</p>
             <p>Description</p>
         </div>
-        <div v-for="(room, index) in roomsList" :key="room.id" class="grid grid-cols-6 border border-b-black border-x-white px-3 py-[1rem]">
+        <div v-for="(room, index) in roomsList" :key="room.id" class="grid grid-cols-6 items-center border border-b-black border-x-white px-3 py-[1rem]">
             <p>{{ room.id }}</p>
             <p>{{ room.room_name }}</p>
             <p>{{ room.room_price }}</p>
             <p>{{ room.max_capacity }}</p>
             <p>{{ room.description_of_room}}</p>
-            <div class="flex static gap-[1rem]">
+            <div class="flex gap-2">
                 <EditRoomModal :roomId="room?.id" :roomName="room?.room_name" :roomPrice="room?.room_price" :maxCapacity="room?.max_capacity" :descriptionOfRoom="room?.description_of_room"/>
-                <button class="bg-green-200 px-[2rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white" @click="handleRoomDelete(room.id)">Delete</button>
+                <DeleteRoomWarningModal :roomId="room?.id"/>
             </div>
         </div>
     </div>

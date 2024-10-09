@@ -5,7 +5,7 @@ import { onGuestsUpdate } from "../services/guestsServices";
 const props = defineProps(["guestId", "firstName", "lastName", "email"])
 
 const editModalIsOpen = ref(false);
-const editedGuest = ref({first_name: "", last_name: "", email: ""});
+const editedGuest = ref({first_name: props.firstName, last_name: props.lastName, email: props.email});
 
 const idToEdit = props.guestId;
 

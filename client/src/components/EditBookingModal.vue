@@ -5,7 +5,8 @@ import { onBookingsUpdate } from "../services/bookingsServices";
 const props = defineProps(["bookingId", "numberOfNights", "numberOfGuests", "totalPrice", "bookingStatus", "bookingIsPaid", "roomId", "guestId"])
 
 const editModalIsOpen = ref(false);
-const editedBooking = ref({number_of_nights: "", number_of_guests: "", total_price: "", status: "", is_paid: "", room_id: "", guest_id: ""});
+const editedBooking = ref({number_of_nights: props.numberOfNights, number_of_guests: props.numberOfGuests, total_price: props.totalPrice, status: props.bookingStatus,
+                            is_paid: props.bookingIsPaid, room_id: props.roomId, guest_id: props.guestId});
 
 const idToEdit = props.bookingId;
 
@@ -35,9 +36,15 @@ const onEdit = async () => {
                     <label>Total Price:</label>
                     <input :placeholder="totalPrice" v-model="editedBooking.total_price" required class="border border-black w-[20rem]"/>
                     <label>Status:</label>
-                    <input :placeholder="bookingStatus" v-model="editedBooking.status" required class="border border-black w-[20rem]"/>
+                    <select v-model="editedBooking.status" required class="border border-black w-[20rem]">
+                        <option value="occupied">occupied</option>
+                        <option value="unoccupied">unoccupied</option>
+                    </select>
                     <label>Is Paid:</label>
-                    <input :placeholder="bookingIsPaid" v-model="editedBooking.is_paid" required class="border border-black w-[20rem]"/>
+                    <select v-model="editedBooking.is_paid" required class="border border-black w-[20rem]">
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
                     <label>Room Id:</label>
                     <input :placeholder="roomId" v-model="editedBooking.room_id" required class="border border-black w-[20rem]"/>
                     <label>Guest Id:</label>

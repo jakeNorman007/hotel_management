@@ -2,7 +2,8 @@
 import { ref, onMounted } from "vue";
 import EditGuestModal from "../components/EditGuestModal.vue";
 import CreateGuestModal from "../components/CreateGuestModal.vue";
-import { getGuests, onGuestsDelete } from "../services/guestsServices";
+import DeleteGuestWarningModal from "../components/DeleteGuestWarningModal.vue";
+import { getGuests } from "../services/guestsServices";
 
 const guestsList = ref([]);
 
@@ -14,16 +15,6 @@ const handleGuestAdd = (guest) => {
     guestsList.value.push({
         body: guest.Body,
     });
-};
-
-const handleGuestDelete = async (guestId) => {
-    try {
-        await onGuestsDelete(guestId);
-        guestsList.value = guestsList.value.filter(guest => guest.id !== guestId);
-        console.log("Guest deleted");
-    } catch (error) {
-        console.error("Error deleting guest", error);
-    };
 };
 </script>
 
@@ -46,9 +37,7 @@ const handleGuestDelete = async (guestId) => {
             <p>{{ guest.email }}</p>
             <div class="flex static gap-[1rem]">
                 <EditGuestModal :guestId="guest?.id" :firstName="guest?.first_name" :lastName="guest?.last_name" :email="guest?.email"/>
-                <button class="bg-green-200 text-green-700 font-semibold px-[2rem] py-1 hover:bg-green-400 hover:text-white"@click="handleGuestDelete(guest.id)">
-                    <p>Delete</p>
-                </button>
+                <DeleteGuestWarningModal :guestId="guest?.id"/>
             </div>
         </div>
     </div>

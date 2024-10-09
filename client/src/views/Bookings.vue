@@ -2,7 +2,8 @@
 import { ref, onMounted } from "vue";
 import EditBookingModal from "../components/EditBookingModal.vue";
 import CreateBookingModal from "../components/CreateBookingModal.vue";
-import { getBookings, onBookingsDelete } from "../services/bookingsServices";
+import DeleteBookingWarningModal from "../components/DeleteBookingWarningModal.vue";
+import { getBookings } from "../services/bookingsServices";
 
 const bookingsList = ref([]);
 
@@ -14,16 +15,6 @@ const handleBookingAdd = (booking) => {
     bookingsList.value.push({
         body: booking.Body,
     });
-};
-
-const handleBookingDelete = async (bookingId) => {
-    try {
-        await onBookingsDelete(bookingId);
-        bookingsList.value = bookingsList.value.filter(booking => booking.id !== bookingId);
-        console.log("Booking deleted");
-    } catch (error) {
-        console.error("Error deleting booking", error);
-    };
 };
 </script>
 
@@ -59,10 +50,10 @@ const handleBookingDelete = async (bookingId) => {
             <p>{{ booking.is_paid }}</p>
             <p>{{ booking.room_id }}</p>
             <p>{{ booking.guest_id }}</p>
-            <div class="flex static gap-[1rem]">
-                <EditBookingModal :bookingId="booking?.id" :numberOfNights="booking?.number_of_nights" :numberOfGuests="booking?.number_of_guests" :totalPrice="booking?.total_price"
-                   :bookingStatus="booking?.status" :bookingIsPaid="booking?.is_paid" :roomId="booking?.room_id" :guestId="booking?.guest_id"/>
-                <button class="bg-green-200 px-[1rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white" @click="handleBookingDelete(booking.id)">Delete</button>
+            <div class="flex gap-[1rem]">
+                <EditBookingModal :bookingId="booking?.id" :numberOfNights="booking?.number_of_nights" :numberOfGuests="booking?.number_of_guests" :totalPrice="booking?.total_price" 
+                    :bookingStatus="booking?.status" :bookingIsPaid="booking?.is_paid" :roomId="booking?.room_id" :guestId="booking?.guest_id"/>
+                <DeleteBookingWarningModal :bookingId="booking?.id"/>
             </div>
         </div>
     </div>

@@ -1,11 +1,11 @@
 <script setup>
-import { Teleport, ref } from "vue";
+import { Teleport, ref, watch } from "vue";
 import { onRoomsUpdate } from "../services/roomsServices";
 
 const props = defineProps(["roomId", "roomName", "roomPrice", "maxCapacity", "descriptionOfRoom"])
 
 const editModalIsOpen = ref(false);
-const editedRoom = ref({room_name: "", room_price: "", max_capacity: "", description_of_room: ""});
+const editedRoom = ref({room_name: props.roomName, room_price: props.roomPrice, max_capacity: props.maxCapacity, description_of_room: props.descriptionOfRoom});
 
 const idToEdit = props.roomId;
 
@@ -17,10 +17,11 @@ const onEdit = async () => {
         console.error("Failed to update room:", error);
     };
 };
+
 </script>
 
 <template>
-    <button @click="editModalIsOpen = true" class="bg-green-200 px-[2rem] font-semibold text-green-700 py-1 hover:bg-green-400 hover:text-white">
+    <button @click="editModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white">
         <p>Edit</p>
     </button>
     <div v-if="editModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">
@@ -31,7 +32,7 @@ const onEdit = async () => {
                     <label>Room name:</label>
                     <input :placeholder="roomName" v-model="editedRoom.room_name" required class="border border-black w-[20rem]"/>
                     <label>Room price:</label>
-                    <input :placeholder="roomPrice" v-model="editedRoom.room_price" required  class="border border-black w-[20rem]"/>
+                    <input :placeholder="roomPrice" v-model="editedRoom.room_price" required class="border border-black w-[20rem]"/>
                     <label>Capacity:</label>
                     <input :placeholder="maxCapacity" v-model="editedRoom.max_capacity" required class="border border-black w-[20rem]"/>
                     <label>Description:</label>
