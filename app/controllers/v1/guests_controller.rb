@@ -1,6 +1,6 @@
 class V1::GuestsController < ApplicationController
   def index
-    @guests = Guest.all
+    @guests = Guest.paginate(page: params[:page], per_page: 8)
     render json: @guests, status: :ok
   end
 
