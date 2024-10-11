@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export async function getGuests() {
+export async function getGuests(page, perPage = 10) {
     try {
-        const response = await axios.get("http://localhost:3000/v1/guests");
-        return response.data.map((i) => ({id: i.id, first_name: i.first_name, last_name: i.last_name, email: i.email}));
+        const response = await axios.get(`http://localhost:3000/v1/guests?page=${page}&per_page=${perPage}`);
+        return response.data;
     } catch(error) {
         console.error("Error getting guests data:", error);
         return {data: [], error: "Failed to gather guests data, please try again."};

@@ -1,7 +1,10 @@
 class V1::GuestsController < ApplicationController
   def index
-    @guests = Guest.paginate(page: params[:page], per_page: 8)
-    render json: @guests, status: :ok
+    @guests = Guest.paginate(page: params[:page], per_page: params[:per_page] || 10)
+    render json: { 
+      guests: @guests,
+      meta: pagination_meta(@guests)
+    }, status: :ok
   end
 
   def show
@@ -29,5 +32,15 @@ class V1::GuestsController < ApplicationController
 
   def guest_params
     params.require(:guest).permit(:first_name, :last_name, :email)
+  end
+
+  def pagination_meta(guests)
+    {
+      total_pages: guests.total_pages,
+      current_page: guests.current_page,
+      next_page: guests.next_page,
+      prev_page: guests.current_page > 1 ? posts.current_page - 1 : nil,
+      total_count: guests.total_entries
+    }
   end
 end
