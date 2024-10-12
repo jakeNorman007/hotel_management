@@ -10,6 +10,16 @@ export async function getGuests(page, perPage = 10) {
     }
 };
 
+export async function getGuestsNoPagination() {
+  try {
+    const response = await axios.get("http://localhost:3000/v2/guests");
+    return response.data;
+  } catch(error) {
+    console.error("Error getting guests data:", error);
+    return {data: [], error: "Failed to gather guests data, please try again."};
+  };
+};
+
 export async function onGuestsCreate(guest) {
     try {
         const response = await axios.post("http://localhost:3000/v1/guests", guest);
