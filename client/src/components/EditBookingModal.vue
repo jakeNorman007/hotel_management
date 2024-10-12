@@ -8,18 +8,43 @@ const props = defineProps(["bookingId", "numberOfNights", "numberOfGuests", "tot
 
 const roomsList = ref([]);
 const guestsList = ref([]);
+const currentPage = ref(1);
+const totalPages = ref(1);
+const totalCount = ref(0);
 const editModalIsOpen = ref(false);
 const editedBooking = ref({number_of_nights: props.numberOfNights, number_of_guests: props.numberOfGuests, total_price: props.totalPrice, status: props.bookingStatus, is_paid: props.bookingIsPaid,
                             room_id: props.roomId, guest_id: props.guestId});
 
 const idToEdit = props.bookingId;
 
+const loadGuests = async (page) => {
+  const data = await getGuests(page);
+
+  if (data && data.meta) {
+    guestsList.value = data.guests;
+    totalPages.value = data.meta.total_pages;
+    currentPage.value = data.meta.current_page;
+    totalCount.value = data.meta.total_count;
+  };
+};
+
+const loadRooms = async (page) => {
+  const data = await getRooms(page);
+
+  if (data && data.meta) {
+    roomsList.value = data.rooms;
+    totalPages.value = data.meta.total_pages;
+    currentPage.value = data.meta.current_page;
+    totalCount.value = data.meta.total_count;
+  };
+};
+
 onMounted(async () => {
-    roomsList.value = await getRooms();
+  loadRooms(currentPage.value);
 });
 
 onMounted(async () => {
-    guestsList.value = await getGuests();
+    loadGuests(currentPage.value);
 });
 
 const onEdit = async () => {

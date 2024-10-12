@@ -1,10 +1,9 @@
 import axios from "axios";
 
-export async function getRooms() {
+export async function getRooms(page, perPage = 10) {
     try {
-        const response = await axios.get("http://localhost:3000/v1/rooms");
-        return response.data.map((i) => ({id: i.id, room_name: i.room_name, room_price: i.room_price, max_capacity: i.max_capacity,
-            description_of_room: i.description_of_room})); 
+        const response = await axios.get(`http://localhost:3000/v1/rooms?page=${page}&per_page=${perPage}`);
+        return response.data;
     } catch(error) {
         console.error("Error getting rooms data:", error);
         return {data: [], error: "Failed to gather rooms data, please try again."};
