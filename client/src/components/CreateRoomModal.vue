@@ -29,14 +29,14 @@ const onSubmit = async() => {
             <div v-if="createModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
                 <button @click="createModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
                 <form @submit="onSubmit" class="flex flex-col pl-[2rem]">
-                    <label>Room name:</label>
-                    <input v-model="room.room_name" placeholder="room name" required class="border border-black w-[20rem]"/>
-                    <label>Price:</label>
-                    <input v-model="room.room_price" placeholder="room price" required class="border border-black w-[20rem]"/>
-                    <label>Capacity:</label>
-                    <input v-model="room.max_capacity" placeholder="room capacity" required class="border border-black w-[20rem]"/>
-                    <label>Description:</label>
-                    <input v-model="room.description_of_room" placeholder="room description" required class="border border-black w-[20rem]"/>
+                    <label for="room_name">Room name:</label>
+                    <input id="room_name" autocomplete="on" v-model="room.room_name" placeholder="room name" required class="border border-black w-[20rem]"/>
+                    <label for="price">Price:</label>
+                    <input id="price" autocomplete="on" v-model="room.room_price" placeholder="room price" required class="border border-black w-[20rem]"/>
+                    <label for="capacity">Capacity:</label>
+                    <input id="capacity" autocomplete="on" v-model="room.max_capacity" placeholder="room capacity" required class="border border-black w-[20rem]"/>
+                    <label for="description">Description:</label>
+                    <input id="description" autocomplete="on" v-model="room.description_of_room" placeholder="room description" required class="border border-black w-[20rem]"/>
                     <button type="submit">Create Room</button>
                     <button type="button" @click="createModalIsOpen = false">Cancel</button>
                 </form>
