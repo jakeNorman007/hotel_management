@@ -3,11 +3,13 @@ import { ref, onMounted, computed } from "vue";
 import EditGuestModal from "../components/EditGuestModal.vue";
 import CreateGuestModal from "../components/CreateGuestModal.vue";
 import DeleteGuestWarningModal from "../components/DeleteGuestWarningModal.vue";
+import LeftArrow from "../assets/icons/LeftArrow.vue";
+import RightArrow from "../assets/icons/RightArrow.vue";
 import { getGuests } from "../services/guestsServices";
 
 const guestsList = ref([]);
 const currentPage = ref(1);
-const totalPages = ref(1);
+const totalPages = ref(0);
 const totalCount = ref(0);
 
 const loadGuests = async (page) => {
@@ -25,9 +27,9 @@ const hasPrevPage = computed(() => currentPage.value > 1);
 const hasNextPage = computed(() => currentPage.value < totalPages.value);
 
 const handleGuestAdd = (guest) => {
-    guestsList.value.push({
-        body: guest.Body,
-    });
+  guestsList.value.push({
+    body: guest.Body,
+  });
 };
 
 onMounted(async () => {
@@ -39,18 +41,29 @@ onMounted(async () => {
   <div class="m-[3rem]">
     <div class="flex justify-between items-center">
       <h1 class="font-semibold text-3xl">Guests</h1>
-      <div class="flex">
+      <div class="flex items-center gap-4">
         <div v-if="!hasPrevPage">
-          <button @click="loadGuests(currentPage - 1)" class="bg-gray-100 text-gray-300 py-2 px-4"><--</button>
+          <div class="text-gray-200 py-2 px-4">
+            <LeftArrow/>
+          </div>
         </div>
         <div v-else>
-          <button @click="loadGuests(currentPage - 1)" class="bg-green-200 py-2 px-4"><--</button>
+          <button @click="loadGuests(currentPage - 1)" class="hover:bg-green-200 rounded-full py-2 px-4">
+            <LeftArrow/>
+          </button>
         </div>
-        <div v-if="!hasNextPage">
-          <button @click="loadGuests(currentPage + 1)" class="bg-gray-100 text-gray-300 py-2 px-4">--></button>
+        <div class="text-lg font-semibold">
+          <p>{{ currentPage }} of {{ totalPages }} - {{ totalCount }} entries</p>
+        </div>
+        <div v-if="hasNextPage">
+          <button @click="loadGuests(currentPage + 1)" class="hover:bg-green-200 rounded-full py-2 px-4">
+            <RightArrow/>
+          </button>
         </div>
         <div v-else>
-          <button @click="loadGuests(currentPage + 1)" class="bg-green-200 py-2 px-4">--></button>
+          <div class="text-gray-200 py-2 px-4">
+            <RightArrow/>
+          </div>
         </div>
       </div>
       <CreateGuestModal @guest-added="handleGuestAdd"/>
@@ -67,14 +80,11 @@ onMounted(async () => {
         <li>{{ guest.first_name }}</li>
         <li>{{ guest.last_name }}</li>
         <li>{{ guest.email }}</li>
-        <div class="flex static gap-[1rem]">
+        <div class="flex gap-[1rem]">
           <EditGuestModal :guestId="guest?.id" :firstName="guest?.first_name" :lastName="guest?.last_name" :email="guest?.email"/>
           <DeleteGuestWarningModal :guestId="guest?.id"/>
         </div>
       </ul>
-    </div>
-    <div class="text-lg font-semibold absolute bottom-[2.5rem]">
-      <p>{{ currentPage }} of {{ totalPages }}</p>
     </div>
   </div>
 </template>

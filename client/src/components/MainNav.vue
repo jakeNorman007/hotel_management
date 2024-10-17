@@ -1,18 +1,18 @@
 <script setup>
-import DashboardIcon from "../assets/icons/DashboardIcon.vue";
-import PeopleIcon from "../assets/icons/PeopleIcon.vue";
-import RoomsIcon from "../assets/icons/RoomsIcon.vue";
-import BookingsIcon from "../assets/icons/BookingsIcon.vue";
-import LogoutIcon from "../assets/icons/LogoutIcon.vue";
 import { useRouter } from "vue-router";
+import RoomsIcon from "../assets/icons/RoomsIcon.vue";
+import LogoutIcon from "../assets/icons/LogoutIcon.vue";
+import PeopleIcon from "../assets/icons/PeopleIcon.vue";
 import { useSessionManagerStore } from "../store/index.js";
+import BookingsIcon from "../assets/icons/BookingsIcon.vue";
+import DashboardIcon from "../assets/icons/DashboardIcon.vue";
 
 const router = useRouter();
 const sessionManagerStore = useSessionManagerStore();
 
 const logOutUser = () => {
-    sessionManagerStore.logoutUser();
-    router.push("/auth");
+  sessionManagerStore.logoutUser();
+  router.push("/auth");
 };
 </script>
 

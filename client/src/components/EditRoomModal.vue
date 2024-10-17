@@ -10,37 +10,35 @@ const editedRoom = ref({room_name: props.roomName, room_price: props.roomPrice, 
 const idToEdit = props.roomId;
 
 const onEdit = async () => {
-    try {
-        const updatedRoom = await onRoomsUpdate(idToEdit, editedRoom.value);
-        console.log("Room updated:", roomBooking);
-    } catch(error) {
-        console.error("Failed to update room:", error);
-    };
+  try {
+    const updatedRoom = await onRoomsUpdate(idToEdit, editedRoom.value);
+  } catch(error) {
+    console.error("Failed to update room:", error);
+  };
 };
-
 </script>
 
 <template>
-    <button @click="editModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white">
-        <p>Edit</p>
-    </button>
-    <div v-if="editModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">
-        <Teleport to="body">
-            <div v-if="editModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
-                <button @click="editModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
-                <form @submit="onEdit" class="flex flex-col pl-[2rem]">
-                    <label>Room name:</label>
-                    <input :placeholder="roomName" v-model="editedRoom.room_name" required class="border border-black w-[20rem]"/>
-                    <label>Room price:</label>
-                    <input :placeholder="roomPrice" v-model="editedRoom.room_price" required class="border border-black w-[20rem]"/>
-                    <label>Capacity:</label>
-                    <input :placeholder="maxCapacity" v-model="editedRoom.max_capacity" required class="border border-black w-[20rem]"/>
-                    <label>Description:</label>
-                    <textarea :placeholder="descriptionOfRoom" v-model="editedRoom.description_of_room" required class="border border-black w-[20rem]"/>
-                    <button type="submit">Edit Room</button>
-                    <button type="button" @click="editModalIsOpen = false">Cancel edit</button>
-                </form>
-            </div>
-        </Teleport>
-    </div>
+  <button @click="editModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white">
+    <p>Edit</p>
+  </button>
+  <div v-if="editModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">
+    <Teleport to="body">
+      <div v-if="editModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
+        <button @click="editModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
+        <form @submit="onEdit" class="flex flex-col pl-[2rem]">
+          <label>Room name:</label>
+          <input :placeholder="roomName" v-model="editedRoom.room_name" required class="border border-black w-[20rem]"/>
+          <label>Room price:</label>
+          <input :placeholder="roomPrice" v-model="editedRoom.room_price" required class="border border-black w-[20rem]"/>
+          <label>Capacity:</label>
+          <input :placeholder="maxCapacity" v-model="editedRoom.max_capacity" required class="border border-black w-[20rem]"/>
+          <label>Description:</label>
+          <textarea :placeholder="descriptionOfRoom" v-model="editedRoom.description_of_room" required class="border border-black w-[20rem]"/>
+          <button type="submit">Edit Room</button>
+          <button type="button" @click="editModalIsOpen = false">Cancel edit</button>
+        </form>
+      </div>
+    </Teleport>
+  </div>
 </template>

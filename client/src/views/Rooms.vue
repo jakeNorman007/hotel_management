@@ -3,6 +3,8 @@ import { ref, onMounted, computed } from "vue";
 import EditRoomModal from "../components/EditRoomModal.vue";
 import CreateRoomModal from "../components/CreateRoomModal.vue";
 import DeleteRoomWarningModal from "../components/DeleteRoomWarningModal.vue"; 
+import LeftArrow from "../assets/icons/LeftArrow.vue";
+import RightArrow from "../assets/icons/RightArrow.vue";
 import { getRooms } from "../services/roomsServices";
 
 const roomsList = ref([]);
@@ -25,9 +27,9 @@ const hasPrevPage = computed(() => currentPage.value > 1);
 const hasNextPage = computed(() => currentPage.value < totalPages.value);
 
 const handleRoomAdd = (room) => {
-    roomsList.value.push({
-        body: room.Body,
-    });
+  roomsList.value.push({
+    body: room.Body,
+  });
 };
 
 onMounted(async () => {
@@ -39,6 +41,31 @@ onMounted(async () => {
   <div class="m-[3rem]">
     <div class="flex justify-between">
       <h1 class="font-semibold text-3xl">Rooms</h1>
+      <div class="flex items-center gap-4">
+        <div v-if="!hasPrevPage">
+          <div class="text-gray-200 py-2 px-4">
+            <LeftArrow/>
+          </div>
+        </div>
+        <div v-else>
+          <button @click="loadRooms(currentPage - 1)" class="hover:bg-green-200 rounded-full py-2 px-4">
+            <LeftArrow/>
+          </button>
+        </div>
+        <div class="text-lg font-semibold">
+          <p>{{ currentPage }} of {{ totalPages }} - {{ totalCount }} entries</p>
+        </div>
+        <div v-if="hasNextPage">
+          <button @click="loadRooms(currentPage + 1)" class="hover:bg-green-200 rounded-full py-2 px-4">
+            <RightArrow/>
+          </button>
+        </div>
+        <div v-else>
+          <div class="text-gray-200 py-2 px-4">
+            <RightArrow/>
+          </div>
+        </div>
+      </div>
       <CreateRoomModal @room-added="handleRoomAdd"/>
     </div>
     <div class="grid grid-cols-6 px-3 py-[1rem] bg-gray-100 text-gray-600 border border-b-black border-t-white border-x-white font-semibold">
@@ -58,12 +85,6 @@ onMounted(async () => {
         <EditRoomModal :roomId="room?.id" :roomName="room?.room_name" :roomPrice="room?.room_price" :maxCapacity="room?.max_capacity" :descriptionOfRoom="room?.description_of_room"/>
         <DeleteRoomWarningModal :roomId="room?.id"/>
       </div>
-    </div>
-    <div class="flex justify-between mt-5">
-      <button @click="loadRooms(currentPage - 1)" :disabled="!hasPrevPage" class="bg-green-200">Previous</button>
-      <button @click="loadRooms(currentPage + 1)" :disabled="!hasNextPage" class="bg-green-200">Next</button>
-      <p>Total guests: {{ totalCount }}</p>
-      <p>Page {{ currentPage }} of {{ totalPages }}</p>
     </div>
   </div>
 </template>

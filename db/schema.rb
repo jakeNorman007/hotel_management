@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_20_204526) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_15_154212) do
   create_table "bookings", force: :cascade do |t|
     t.integer "number_of_nights", null: false
     t.integer "number_of_guests", null: false
-    t.float "total_price", null: false
     t.string "status", null: false
     t.boolean "is_paid", null: false
     t.integer "room_id", null: false
