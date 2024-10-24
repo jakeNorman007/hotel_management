@@ -21,25 +21,55 @@ const onSubmit = async() => {
 </script>
 
 <template>
-  <button @click="createModalIsOpen = true" class="flex items-center gap-1 font-semibold text-green-800 bg-green-200 p-3 my-3 hover:bg-green-400 hover:text-white">
+  <button @click="createModalIsOpen = true" class="flex items-center gap-1 font-semibold text-green-800 bg-green-200 p-3 my-3 hover:bg-green-400 hover:text-white rounded-md">
     <AddIcon/>
     <p>Create</p>
   </button>
   <div v-if="createModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">
     <Teleport to="body">
-      <div v-if="createModalIsOpen" class="bg-white fixed z-[999] w-[50rem] h-[30rem] left-[25%] top-[25%]">
-        <button @click="createModalIsOpen = false" class="bg-green-200 px-2 py-1 mx-2 my-2">Close modal</button>
-        <form @submit="onSubmit" class="flex flex-col pl-[2rem]">
-          <label for="room_name">Room name:</label>
-          <input id="room_name" autocomplete="on" v-model="room.room_name" placeholder="room name" required class="border border-black w-[20rem]"/>
-          <label for="price">Price:</label>
-          <input id="price" autocomplete="on" v-model="room.room_price" placeholder="room price" required class="border border-black w-[20rem]"/>
-          <label for="capacity">Capacity:</label>
-          <input id="capacity" autocomplete="on" v-model="room.max_capacity" placeholder="room capacity" required class="border border-black w-[20rem]"/>
-          <label for="description">Description:</label>
-          <input id="description" autocomplete="on" v-model="room.description_of_room" placeholder="room description" required class="border border-black w-[20rem]"/>
-          <button type="submit">Create Room</button>
-          <button type="button" @click="createModalIsOpen = false">Cancel</button>
+      <div v-if="createModalIsOpen" class="bg-white fixed z-[999] w-fit h-fit left-[30%] top-[20%] flex items-center justify-center rounded-md">
+        <form @submit="onSubmit" class="flex flex-col gap-2">
+          <div class="flex justify-center rounded-t-md py-[2rem] bg-green-200 border-4 border-white">
+            <p class="text-2xl font-semibold">Create a new room.</p>
+          </div>
+          <div class="pt-[3rem] px-[2rem]">
+          <div class="flex gap-[2rem]">
+          <div>
+            <label for="room_name">
+              <p class="text-gray-400">Room name:</p>
+            </label>
+            <input id="room_name" autocomplete="on" v-model="room.room_name" placeholder="room name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+          </div>
+          <div>
+            <label for="price">
+              <p class="text-gray-400">Price:</p>
+            </label>
+            <input id="price" autocomplete="on" v-model="room.room_price" placeholder="room price" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+          </div>
+          </div>
+          <div class="flex gap-[2rem] py-5">
+          <div>
+            <label for="capacity">
+              <p class="text-gray-400">Capacity:</p>
+            </label>
+            <input id="capacity" autocomplete="on" v-model="room.max_capacity" placeholder="room capacity" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+          </div>
+          <div>
+            <label for="description">
+              <p class="text-gray-400">Description:</p>
+            </label>
+            <input id="description" autocomplete="on" v-model="room.description_of_room" placeholder="room description" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+          </div>
+          </div>
+          </div>
+          <div class="flex mt-[3rem]">
+            <button type="submit" class="flex justify-start bg-green-200 text-green-800 hover:text-white w-[50%] py-[1rem] rounded-bl-md hover:bg-green-400">
+              <p class="pl-3">Create Room</p>
+            </button>
+            <button type="button" @click="createModalIsOpen = false" class="flex justify-end bg-gray-200 text-gray-800 hover:text-white w-[50%] py-[1rem] rounded-br-md hover:bg-gray-400">
+              <p class="pr-3">Cancel</p>
+            </button>
+          </div>
         </form>
       </div>
     </Teleport>

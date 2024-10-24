@@ -27,7 +27,7 @@ const onSubmit = async() => {
   </button>
   <div v-if="createModalIsOpen" class="h-screen absolute bg-black z-[998] w-full left-0 top-0 opacity-25">
     <Teleport to="body">
-      <div v-if="createModalIsOpen" class="fixed bg-white z-[999] h-fit w-fit top-[25%] left-[32%] bottom-[50%] flex items-center justify-center rounded-md">
+      <div v-if="createModalIsOpen" class="fixed bg-white z-[999] h-fit w-fit top-[20%] left-[30%] bottom-[50%] flex items-center justify-center rounded-md">
         <form @submit="onSubmit" class="flex flex-col gap-2">
             <div class="flex justify-center rounded-t-md py-[2rem] bg-green-200 border-4 border-white">
               <p class="text-2xl font-semibold">Create a new booking.</p>
