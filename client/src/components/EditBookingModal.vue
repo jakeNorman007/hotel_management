@@ -32,7 +32,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <button @click="editModalIsOpen = true" class="px-5 py-2 bg-green-200 font-semibold text-green-700 hover:bg-green-400 hover:text-white">
+  <button @click="editModalIsOpen = true" class="px-5 py-2 bg-green-200 font-semibold text-green-700 hover:bg-green-400 hover:text-white rounded-md">
     <p>Edit</p>
   </button>
   <div v-if="editModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">
