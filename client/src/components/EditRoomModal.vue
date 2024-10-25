@@ -19,7 +19,7 @@ const onEdit = async () => {
 </script>
 
 <template>
-  <button @click="editModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white">
+  <button @click="editModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white rounded-md">
     <p>Edit</p>
   </button>
   <div v-if="editModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">

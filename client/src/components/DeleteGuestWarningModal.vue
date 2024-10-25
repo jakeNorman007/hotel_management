@@ -18,7 +18,7 @@ const handleGuestDelete = async (guestId) => {
 </script>
 
 <template>
-  <button @click="deleteModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white">
+  <button @click="deleteModalIsOpen = true" class="py-2 px-6 font-semibold text-green-800 bg-green-200 hover:bg-green-400 hover:text-white rounded-md">
     <p>Delete</p>
   </button>
   <div v-if="deleteModalIsOpen" class="h-screen fixed bg-black z-[998] w-full left-0 top-0 opacity-25">
