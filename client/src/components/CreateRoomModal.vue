@@ -33,34 +33,34 @@ const onSubmit = async() => {
             <p class="text-2xl font-semibold">Create a new room.</p>
           </div>
           <div class="pt-[3rem] px-[2rem]">
-          <div class="flex gap-[2rem]">
-          <div>
-            <label for="room_name">
-              <p class="text-gray-400">Room name:</p>
-            </label>
-            <input id="room_name" autocomplete="on" v-model="room.room_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
-          </div>
-          <div>
-            <label for="price">
-              <p class="text-gray-400">Price:</p>
-            </label>
-            <input id="price" autocomplete="on" v-model="room.room_price" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
-          </div>
-          </div>
-          <div class="flex gap-[2rem] py-5">
-          <div>
-            <label for="capacity">
-              <p class="text-gray-400">Capacity:</p>
-            </label>
-            <input id="capacity" autocomplete="on" v-model="room.max_capacity" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
-          </div>
-          <div>
-            <label for="description">
-              <p class="text-gray-400">Description:</p>
-            </label>
-            <input id="description" autocomplete="on" v-model="room.description_of_room" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
-          </div>
-          </div>
+            <div class="flex gap-[2rem]">
+              <div>
+                <label for="room_name">
+                  <p class="text-gray-400">Room name:</p>
+                </label>
+                <input id="room_name" autocomplete="on" v-model="room.room_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+              </div>
+              <div>
+                <label for="price">
+                  <p class="text-gray-400">Price:</p>
+                </label>
+                <input id="price" autocomplete="on" v-model="room.room_price" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+              </div>
+            </div>
+            <div class="flex gap-[2rem] py-5">
+              <div>
+                <label for="capacity">
+                  <p class="text-gray-400">Capacity:</p>
+                </label>
+                <input id="capacity" autocomplete="on" v-model="room.max_capacity" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+              </div>
+              <div>
+                <label for="description">
+                  <p class="text-gray-400">Description:</p>
+                </label>
+                <input id="description" autocomplete="on" v-model="room.description_of_room" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+              </div>
+            </div>
           </div>
           <div class="flex mt-[3rem]">
             <button type="submit" class="flex justify-start bg-green-200 text-green-800 hover:text-white w-[50%] py-[1rem] rounded-bl-md hover:bg-green-400">
