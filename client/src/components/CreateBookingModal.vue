@@ -38,7 +38,7 @@ const onSubmit = async() => {
                 <label for="nights">
                   <p class="text-gray-400">Number of nights:</p>
                 </label>
-                <input id="nights" autocomplete="on" v-model="booking.number_of_nights" required class="text-lg h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="nights" autocomplete="on" v-model="booking.number_of_nights" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
               </div>
               <div>
                 <label for="guests">
