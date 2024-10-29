@@ -10,6 +10,16 @@ export async function getBookings(page, perPage = 10) {
   };
 };
 
+export async function getBookingsNoPagination() {
+  try {
+    const response = await axios.get("http://localhost:3000/v2/bookings");
+    return response.data;
+  } catch(error) {
+    console.error("Error getting guests data:", error);
+    return {data: [], error: "Failed to gather guests data, please try again."};
+  };
+};
+
 export async function onBookingsCreate(booking) {
   try {
     const response = await axios.post("http://localhost:3000/v1/bookings", booking);

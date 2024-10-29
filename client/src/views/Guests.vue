@@ -38,7 +38,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="m-[3rem]">
+  <div class="flex flex-col">
+  <div class="flex justify-end items-center pr-[3rem] w-full h-[5rem] border-b border-black shadow-md shadow-gray-200">
+    <div>
+      <p>Welcome, user</p>
+    </div>
+  </div>
+  <div class="mx-[3rem]">
     <div class="flex justify-between items-center">
       <h1 class="font-semibold text-3xl">Guests</h1>
       <div class="flex items-center gap-4">
@@ -86,5 +92,6 @@ onMounted(async () => {
         </div>
       </ul>
     </div>
+  </div>
   </div>
 </template>

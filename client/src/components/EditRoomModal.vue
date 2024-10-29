@@ -55,7 +55,7 @@ const onEdit = async () => {
               <label class="text-gray-400">
                 <p>Description:</p>
               </label>
-              <textarea :placeholder="descriptionOfRoom" v-model="editedRoom.description_of_room" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+              <input :placeholder="descriptionOfRoom" v-model="editedRoom.description_of_room" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
               </div>
             </div>
           </div>
