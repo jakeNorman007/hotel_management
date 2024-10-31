@@ -35,27 +35,27 @@ const onEdit = async () => {
                 <label class="text-gray-400">
                   <p>Room name:</p>
                 </label>
-                <input :placeholder="roomName" v-model="editedRoom.room_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input :placeholder="roomName" v-model="editedRoom.room_name" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label class="text-gray-400">
                   <p>Room price:</p>
                 </label>
-                <input :placeholder="roomPrice" v-model="editedRoom.room_price" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input :placeholder="roomPrice" v-model="editedRoom.room_price" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
             <div class="flex gap-[2rem] py-5">
               <div>
-              <label class="text-gray-400">
-                <p>Capacity:</p>
-              </label>
-              <input :placeholder="maxCapacity" v-model="editedRoom.max_capacity" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <label class="text-gray-400">
+                  <p>Capacity:</p>
+                </label>
+                <input :placeholder="maxCapacity" v-model="editedRoom.max_capacity" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div>
-              <label class="text-gray-400">
-                <p>Description:</p>
-              </label>
-              <input :placeholder="descriptionOfRoom" v-model="editedRoom.description_of_room" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <label class="text-gray-400">
+                  <p>Description:</p>
+                </label>
+                <input :placeholder="descriptionOfRoom" v-model="editedRoom.description_of_room" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
           </div>

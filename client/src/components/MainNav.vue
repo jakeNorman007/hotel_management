@@ -25,19 +25,19 @@ const logOutUser = () => {
       </div>
     </div>
     <div class="flex flex-col">
-      <router-link :to="{ name: 'Dashboard' }" class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 hover:bg-green-200 hover:text-green-600 gap-2 border-y border-gray-200">
+      <router-link :to="{ name: 'Dashboard' }" class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 focus:bg-green-200 focus:text-green-600 hover:bg-green-200 hover:text-green-600 gap-2 border-y border-gray-200">
         <DashboardIcon/>
         <p>Dashboard</p>
       </router-link>
-      <router-link :to="{ name: 'Guests' }" class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 hover:bg-green-200 hover:text-green-600 gap-2 border-b border-gray-200">
+      <router-link :to="{ name: 'Guests' }" class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 focus:bg-green-200 focus:text-green-600 hover:bg-green-200 hover:text-green-600 gap-2 border-b border-gray-200">
         <PeopleIcon/>
         <p>Guests</p>
       </router-link>
-      <router-link :to="{ name: 'Rooms' }"class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 hover:bg-green-200 hover:text-green-600 gap-2 border-b border-gray-200">
+      <router-link :to="{ name: 'Rooms' }"class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 focus:bg-green-200 focus:text-green-600 hover:bg-green-200 hover:text-green-600 gap-2 border-b border-gray-200">
         <RoomsIcon/>
         <p>Rooms</p>
       </router-link>
-      <router-link :to="{ name: 'Bookings' }" class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 hover:bg-green-200 hover:text-green-600 gap-2 border-b border-gray-200">
+      <router-link :to="{ name: 'Bookings' }" class="flex justify-start items-center pl-5 py-4 font-semibold text-gray-600 focus:bg-green-200 focus:text-green-600 hover:bg-green-200 hover:text-green-600 gap-2 border-b border-gray-200">
         <BookingsIcon/>
         <p>Bookings</p>
       </router-link>

@@ -119,13 +119,13 @@ onMounted(async () => {
         <p class="text-green-600">${{ findTotal(item.id) }}.00</p>
       </div>
       <div v-if="item.status == 'occupied'">
-        <p class="text-blue-600">{{ item.status }}</p>
+        <p>{{ item.status }}</p>
       </div>
       <div v-else>
         <p class="text-red-600">{{ item.status }}</p>
       </div>
       <div v-if="item.is_paid == true">
-        <p class="text-green-600">{{ item.is_paid }}</p>
+        <p>{{ item.is_paid }}</p>
       </div>
       <div v-else>
         <p class="text-red-600">{{ item.is_paid }}</p>

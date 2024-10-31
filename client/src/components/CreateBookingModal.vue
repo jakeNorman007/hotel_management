@@ -38,13 +38,13 @@ const onSubmit = async() => {
                 <label for="nights">
                   <p class="text-gray-400">Number of nights:</p>
                 </label>
-                <input id="nights" autocomplete="on" v-model="booking.number_of_nights" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="nights" autocomplete="off" v-model="booking.number_of_nights" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label for="guests">
                   <p class="text-gray-400">Number of guests:</p>
                 </label>
-                <input id="guests" autocomplete="on" v-model="booking.number_of_guests" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="guests" autocomplete="off" v-model="booking.number_of_guests" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
             <div class="flex gap-[2rem] py-5">
@@ -52,7 +52,7 @@ const onSubmit = async() => {
                 <label for="status">
                   <p class="text-gray-400">Room status:</p>
                 </label>
-                <select id="status"v-model="booking.status" name="status" required class="h-[3rem] w-[16rem] border border-gray-400 rounded-md">
+                <select id="status"v-model="booking.status" name="status" required class="focus:outline-none h-[3rem] w-[16rem] bg-gray-200 border-b-4 border-gray-400">
                   <option value="null">-</option>
                   <option value="occupied">occupied</option>
                   <option value="unoccupied">unoccupied</option>
@@ -62,7 +62,7 @@ const onSubmit = async() => {
                 <label for="paid">
                   <p class="text-gray-400">Is paid:</p>
                 </label>
-                <select id="paid" v-model="booking.is_paid" name="is_paid" required class="h-[3rem] w-[16rem] border border-gray-400 rounded-md">
+                <select id="paid" v-model="booking.is_paid" name="is_paid" required class="focus:outline-none h-[3rem] w-[16rem] border-b-4 bg-gray-200 border-gray-400">
                   <option value="null">-</option>
                   <option value="true">true</option>
                   <option value="false">false</option>
@@ -74,13 +74,13 @@ const onSubmit = async() => {
                 <label for="room_id">
                   <p class="text-gray-400">Room number:</p>
                 </label>
-                <input id="room_id" autocomplete="on" v-model="booking.room_id" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="room_id" autocomplete="off" v-model="booking.room_id" required class="focus:outline-none h-[3rem] w-[16rem] px-2 border-b-4 bg-gray-200 border-gray-400"/>
               </div>
               <div>
                 <label for="guest_id">
                   <p class="text-gray-400">Guest number:</p>
                 </label>
-                <input id="guest_id" autocomplete="on" v-model="booking.guest_id" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="guest_id" autocomplete="off" v-model="booking.guest_id" required class="focus:outline-none h-[3rem] w-[16rem] px-2 border-b-4 bg-gray-200 border-gray-400"/>
               </div>
             </div>
           </div>

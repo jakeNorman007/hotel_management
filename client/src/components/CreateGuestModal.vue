@@ -38,19 +38,19 @@ const onSubmit = async() => {
                 <label for="first_name">
                   <p class="text-gray-400">First name:</p>
                 </label>
-                <input id="first_name" autocomplete="on" v-model="guest.first_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="first_name" autocomplete="off" v-model="guest.first_name" required class="focus:outline-none h-[3rem] w-[16rem] bg-gray-200 px-2 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label for="last_name">
                   <p class="text-gray-400">Last name:</p>
                 </label>
-                <input id="last_name" autocomplete="on" v-model="guest.last_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="last_name" autocomplete="off" v-model="guest.last_name" required class="focus:outline-none h-[3rem] w-[16rem] bg-gray-200 px-2 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label for="email">
                   <p class="text-gray-400">Email:</p>
                 </label>
-                <input id="email" autocomplete="on" v-model="guest.email" required type="email" class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="email" autocomplete="off" v-model="guest.email" required type="email" class="focus:outline-none h-[3rem] w-[16rem] bg-gray-200 px-2 border-b-4 border-gray-400"/>
               </div>
             </div>
           </div>

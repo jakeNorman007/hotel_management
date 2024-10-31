@@ -28,8 +28,8 @@ const handleBookingDelete = async (bookingId) => {
           <div class="flex justify-center rounded-t-md py-[2rem] bg-green-200 border-4 border-white">
             <p class="text-2xl font-semibold">Delete booking.</p>
           </div>
-          <p class="text-xl mt-[3rem] px-[3rem]">Are you sure?</p>
-          <p class="text-xl px-[3rem]">This action is permanent and cannot be undone.</p>
+          <p class="mt-[3rem] px-[3rem]">Are you sure?</p>
+          <p class="px-[3rem]">This action is permanent and cannot be undone.</p>
           <div class="flex mt-[3rem]">
             <button type="submit" class="flex justify-start bg-red-200 text-red-800 hover:text-white w-[50%] py-[1rem] rounded-bl-md hover:bg-red-400">
               <p class="pl-3">Delete</p>

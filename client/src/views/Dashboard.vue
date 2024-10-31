@@ -41,18 +41,7 @@ onMounted(async () => {
     datasets: [
       {
         label: "",
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-        ],
+        backgroundColor: ["#4ade80", "#9ca3af", "#bbf7d0", "#e5e7eb"],
         borderWidth: 1,
         data: Object.values(nightsComputed),
       },
@@ -63,12 +52,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div class="flex justify-end items-center pr-[3rem] w-full h-[5rem] border-b border-black shadow-md shadow-gray-200">
-      <div>
-        <p>Welcome, user</p>
-      </div>
-    </div>
-    <div class="p-3 m-3 border border-black w-[20rem] h-[20rem]">
+    <div class="p-3 m-3 border w-[20rem] h-[20rem]">
       <Doughnut v-if="chartData" :data="chartData" :options="chartOptions"/>
     </div>
   </div>

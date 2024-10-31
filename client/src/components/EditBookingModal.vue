@@ -48,13 +48,13 @@ onMounted(async () => {
                 <label for="nights">
                   <p class="text-gray-400">Number of nights:</p>
                 </label>
-                <input id="nights" :placeholder="numberOfNights" v-model="editedBooking.number_of_nights" required class="pl-2 h-[3rem] w-[16rem] border border-gray-400 rounded-md"/>
+                <input id="nights" :placeholder="numberOfNights" v-model="editedBooking.number_of_nights" required class="focus:outline-none pl-2 h-[3rem] w-[16rem] bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label for="guests">
                   <p class="text-gray-400">Number of guests:</p>
                 </label>
-                <input id="guests" :placeholder="numberOfGuests" v-model="editedBooking.number_of_guests" required class="pl-2 h-[3rem] w-[16rem] border border-gray-400 rounded-md"/>
+                <input id="guests" :placeholder="numberOfGuests" v-model="editedBooking.number_of_guests" required class="focus:outline-none pl-2 h-[3rem] w-[16rem] bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
             <div class="flex gap-[2rem] py-5">
@@ -62,7 +62,7 @@ onMounted(async () => {
                 <label for="status">
                   <p class="text-gray-400">Room status:</p>
                 </label>
-                <select id="status" v-model="editedBooking.status" required class="pl-2 h-[3rem] w-[16rem] border border-gray-400 rounded-md">
+                <select id="status" v-model="editedBooking.status" required class="focus:outline-none pl-2 h-[3rem] w-[16rem] bg-gray-200 border-b-4 border-gray-400">
                   <option value="occupied">occupied</option>
                   <option value="unoccupied">unoccupied</option>
                 </select>
@@ -71,7 +71,7 @@ onMounted(async () => {
                 <label for="paid">
                   <p class="text-gray-400">Is Paid:</p>
                 </label>
-                <select id="paid" v-model="editedBooking.is_paid" required class="pl-2 h-[3rem] w-[16rem] border border-gray-400 rounded-md">
+                <select id="paid" v-model="editedBooking.is_paid" required class="focus:outline-none pl-2 h-[3rem] w-[16rem] bg-gray-200 border-b border-gray-400">
                   <option value="true">true</option>
                   <option value="false">false</option>
                 </select>
@@ -82,7 +82,7 @@ onMounted(async () => {
                 <label for="room">
                   <p class="text-gray-400">Room number:</p>
                 </label>
-                <select id="room" required class="pl-2 h-[3rem] w-[16rem] border border-gray-400 rounded-md">
+                <select id="room" required class="focus:outline-none pl-2 h-[3rem] w-[16rem] bg-gray-200 border-b-4 border-gray-400">
                   <option v-for="(room, index) in roomsList" :key="index" value="id">{{ room.id }}: {{ room.room_name }}</option>
                 </select>
               </div>
@@ -90,7 +90,7 @@ onMounted(async () => {
                 <label for="guest">
                   <p class="text-gray-400">Guest number:</p>
                 </label>
-                <select id="guest" required class="pl-2 h-[3rem] w-[16rem] border border-gray-400 rounded-md">
+                <select id="guest" required class="focus:outline-none pl-2 h-[3rem] w-[16rem] bg-gray-200 border-b-4 border-gray-400">
                   <option v-for="(guest, index) in guestsList" :key="guest.id" value="id">{{ guest.id }}: {{ guest.first_name }} {{ guest.last_name }}</option>
                 </select>
               </div>

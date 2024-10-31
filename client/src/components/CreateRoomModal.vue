@@ -38,13 +38,13 @@ const onSubmit = async() => {
                 <label for="room_name">
                   <p class="text-gray-400">Room name:</p>
                 </label>
-                <input id="room_name" autocomplete="on" v-model="room.room_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="room_name" autocomplete="off" v-model="room.room_name" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label for="price">
                   <p class="text-gray-400">Price:</p>
                 </label>
-                <input id="price" autocomplete="on" v-model="room.room_price" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="price" autocomplete="off" v-model="room.room_price" required class="focus:outine-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
             <div class="flex gap-[2rem] py-5">
@@ -52,13 +52,13 @@ const onSubmit = async() => {
                 <label for="capacity">
                   <p class="text-gray-400">Capacity:</p>
                 </label>
-                <input id="capacity" autocomplete="on" v-model="room.max_capacity" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="capacity" autocomplete="off" v-model="room.max_capacity" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div>
                 <label for="description">
                   <p class="text-gray-400">Description:</p>
                 </label>
-                <input id="description" autocomplete="on" v-model="room.description_of_room" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input id="description" autocomplete="off" v-model="room.description_of_room" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
           </div>

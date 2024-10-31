@@ -33,15 +33,15 @@ const onEdit = async () => {
             <div class="flex flex-col gap-[2rem]">
               <div class="flex flex-col">
                 <label class="text-gray-400">First name:</label>
-                <input :placeholder="firstName" v-model="editedGuest.first_name" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input :placeholder="firstName" v-model="editedGuest.first_name" required class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div class="flex flex-col">
                 <label class="text-gray-400">Last name:</label>
-                <input :placeholder="lastName" v-model="editedGuest.last_name" required  class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input :placeholder="lastName" v-model="editedGuest.last_name" required  class="focus:outline-none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
               <div class="flex flex-col">
                 <label class="text-gray-400">email:</label>
-                <input :placeholder="email" v-model="editedGuest.email" required class="h-[3rem] w-[16rem] px-2 border border-gray-400 rounded-md"/>
+                <input :placeholder="email" v-model="editedGuest.email" required class="focus:none h-[3rem] w-[16rem] px-2 bg-gray-200 border-b-4 border-gray-400"/>
               </div>
             </div>
           </div>
